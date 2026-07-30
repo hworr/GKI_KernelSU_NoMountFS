@@ -44,6 +44,21 @@ on:
           - KSUN+DS
           - KSUN+NOMOUNT
           - KSUN
+          - BBG+NET+DS+NOMOUNT
+          - BBG+NET+DS
+          - BBG+NET+NOMOUNT
+          - BBG+DS+NOMOUNT
+          - NET+DS+NOMOUNT
+          - BBG+NET
+          - BBG+NOMOUNT
+          - BBG+DS
+          - NET+NOMOUNT
+          - NET+DS
+          - DS+NOMOUNT
+          - BBG
+          - NET
+          - DS
+          - NOMOUNT
           - NONE
           - FULL
         default: FULL
