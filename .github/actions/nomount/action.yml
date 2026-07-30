@@ -1,0 +1,56 @@
+name: 'Setup NoMount'
+description: 'Clone NoMount, apply the kernel integration patch, copy source files, and enable CONFIG_NOMOUNT'
+
+inputs:
+  kernel_version:
+    description: 'Kernel version (e.g., 5.10, 5.15, 6.1, 6.6, 6.12)'
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Clone NoMount Repository
+      shell: bash
+      run: |
+        set -euo pipefail
+        echo "::group::Cloning NoMount"
+        git clone --depth=1 https://github.com/maxsteeel/nomount.git /tmp/nomount
+        echo "::endgroup::"
+
+    - name: Apply NoMount Kernel Patch
+      shell: bash
+      working-directory: ${{ github.workspace }}/kernel/common
+      run: |
+        set -euo pipefail
+        KERNEL_VER="${{ inputs.kernel_version }}"
+        PATCH_FILE="/tmp/nomount/kernel/patches/nomount_${KERNEL_VER}_kernel_integration.patch"
+
+        if [ ! -f "$PATCH_FILE" ]; then
+          echo "::error::NoMount patch not found for kernel ${KERNEL_VER}: $PATCH_FILE"
+          echo "Available patches:"
+          ls /tmp/nomount/kernel/patches/
+          exit 1
+        fi
+
+        echo "Applying NoMount patch for kernel ${KERNEL_VER}: $PATCH_FILE"
+        patch -p1 --no-backup-if-mismatch -f < "$PATCH_FILE" || {
+          echo "::warning::NoMount patch applied with some rejects — check .rej files"
+        }
+
+    - name: Copy NoMount Source Files
+      shell: bash
+      run: |
+        set -euo pipefail
+        FS_DIR="${{ github.workspace }}/kernel/common/fs"
+        if [ ! -d "$FS_DIR" ]; then
+          echo "::error::Kernel fs/ directory not found at $FS_DIR"
+          exit 1
+        fi
+        echo "Copying NoMount source files to $FS_DIR"
+        cp -v /tmp/nomount/kernel/src/* "$FS_DIR/"
+
+    - name: Enable NoMount Kernel Config
+      uses: ./.github/actions/set-kernel-config
+      with:
+        config_list: |
+          CONFIG_NOMOUNT=y

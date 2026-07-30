@@ -175,6 +175,12 @@ jobs:
         version: ${{ inputs.version }}
         kernel_version: ${{ inputs.kernel_version }}
 
+    - name: Setup NoMount
+      if: contains(inputs.feature_set, 'NOMOUNT') || inputs.feature_set == 'FULL'
+      uses: ./.github/actions/nomount
+      with:
+        kernel_version: ${{ inputs.kernel_version }}
+
     - name: Apply NTSync Patches
       uses: ./.github/actions/ntsync
       with:
