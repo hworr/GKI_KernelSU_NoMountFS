@@ -3,7 +3,7 @@
 # 🔥 Wild Kernels for Android
 
 [![KernelSU](https://img.shields.io/badge/KernelSU-Supported-green)](https://kernelsu.org/)
-[![SUSFS](https://img.shields.io/badge/SUSFS-Integrated-orange)](https://gitlab.com/simonpunk/susfs4ksu)
+
 
 </div>
 
@@ -50,7 +50,7 @@ For GKI installation, please follow the official guide:
 ## ✨ Features
 
 - 🔐 **KernelSU**: A root solution for Android GKI devices that works in kernel mode and grants root permission to userspace applications directly in kernel space
-- 🛡️ **SUSFS**: An addon root hiding kernel patches and userspace module for KernelSU
+
 
 ---
 
@@ -59,9 +59,8 @@ For GKI installation, please follow the official guide:
 - 🔐 **KernelSU**: Developed by [tiann](https://github.com/tiann/KernelSU)
 - 🚀 **YukiSU**: Developed by [Anatdx](https://github.com/Anatdx/YukiSU)
 - ✨ **Magic-KSU**: Developed by [5ec1cff](https://github.com/5ec1cff/KernelSU)
-- 🛡️ **SUSFS**: Developed by [simonpunk](https://gitlab.com/simonpunk/susfs4ksu.git)
 - 🛡️ **Baseband-guard (BBG)**: Developed by [vc-teahouse](https://github.com/vc-teahouse/Baseband-guard)
-- 📦 **SUSFS Module**: Developed by [sidex15](https://github.com/sidex15)
+
 - 👑 **Sultan Kernels**: Developed by [kerneltoast](https://github.com/kerneltoast)
 - 🔧 **Device Boot Fix**: [Boot fix commit](https://github.com/Anything-at-25-00/android_kernel_common_android12-5.10/commit/2476d262b597fe8af82cfb7aaf96676f51c6b4ed) for fixing some devices not booting
 
@@ -104,7 +103,7 @@ Flashing this kernel will void your warranty, and there is always a risk of bric
 
 | Contributor | Contribution |
 |-------------|-------------|
-| 🛡️ [simonpunk](https://gitlab.com/simonpunk/susfs4ksu.git) | Created SUSFS! |
+
 | 📦 [sidex15](https://github.com/sidex15) | Created module! |
 | 🩹 [backslashxx](https://github.com/backslashxx) | Helped with patches! |
 | 🔧 [Teemo](https://github.com/liqideqq) | Helped with patches! |

@@ -10,8 +10,7 @@ PLACEHOLDERS = {
     "{{KSUN_BRANCH}}": lambda: os.environ.get("KSUN_BRANCH", "dev"),
     "{{KSUN_COMMIT}}": lambda: os.environ.get("KSUN_COMMIT", "unknown"),
     "{{KSU_MANAGER}}": lambda: os.environ.get("KSU_MANAGER", "Placeholder"),
-    "{{SUSFS_BRANCHES}}": lambda: os.environ.get("SUSFS_COMMIT", "latest on auto-derived gki-{version} branch"),
-    "{{SUSFS_BRANCHS}}": lambda: os.environ.get("SUSFS_COMMIT", "latest on auto-derived gki-{version} branch"),
+
 }
 
 
@@ -86,12 +85,7 @@ for key in data.keys():
     if section.get("branch"):
         emit(f"- Branch: {section['branch']}")
 
-    if key == "susfs":
-        susfs_commit = os.environ.get("SUSFS_COMMIT", "")
-        if susfs_commit:
-            emit(f"- Commit: `{susfs_commit}`")
-        else:
-            emit("- Commit: latest on auto-derived gki-{version} branch")
+
 
     if section.get("items"):
         emit_list(section["items"])

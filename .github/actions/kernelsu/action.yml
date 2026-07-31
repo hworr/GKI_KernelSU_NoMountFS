@@ -2,7 +2,7 @@ name: Setup Wild KSU
 description: Download and configure Wild KSU with version tracking
 inputs:
   ksu_branch:
-    description: 'KernelSU branch or commit (empty = latest dev-susfs branch tip)'
+    description: 'KernelSU branch or commit (empty = latest main branch tip)'
     required: false
     default: ""
 

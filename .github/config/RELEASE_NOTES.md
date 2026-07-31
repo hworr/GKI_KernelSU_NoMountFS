@@ -9,7 +9,7 @@ Join the telegram here: https://t.me/WildKernelsTG
 
 # Features
 - [YukiSU](#yukisu)
-- [SUSFS v2.2.0](#susfs-v220)
+
 - [Baseband Guard (BBG)](#baseband-guard-bbg)
 - [DroidSpaces-OSS](#droidspaces-oss)
 - [Networking Improvements](#networking-improvements)
@@ -41,23 +41,6 @@ Manager: {{KSU_MANAGER}}
 
 **Commit**  
 `{{KSUN_COMMIT}}`
-
-## [SUSFS v2.2.0](https://gitlab.com/simonpunk/susfs4ksu) {#susfs-v220}
-
-A KSU addon for hiding root using kernel patches and a userspace module!
-
-Reccomended Module: [susfs4ksu-module by sidex15](https://github.com/sidex15/susfs4ksu-module)
-
-- SUS_PATH - Hide suspicious paths
-- SUS_MOUNT - Hide mount points (no CLI support)
-- SUS_KSTAT - Spoof kernel statistics
-- SPOOF_UNAME - Kernel version spoofing
-- SPOOF_CMDLINE - Boot parameter spoofing
-- OPEN_REDIRECT - File access redirection
-- SUS_MAP - Memory mapping protection
-- AVC_SPOOF - Spoof procfs avc denial logs
-
-{{SUSFS_BRANCHES}}
 
 ## [Baseband Guard (BBG)](https://github.com/vc-teahouse/Baseband-guard) {#baseband-guard-bbg}
 
