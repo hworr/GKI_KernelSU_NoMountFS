@@ -506,27 +506,27 @@ jobs:
 
         echo "release_title=$release_title" >> "$GITHUB_OUTPUT"
 
-    - name: Extract KernelSU Version Info
+    - name: Extract YukiSU Version Info
       id: ksu_version
       run: |
         set -euo pipefail
 
-        KSU_REPO="https://github.com/pershoot/KernelSU-Next.git"
+        KSU_REPO="https://github.com/Anatdx/YukiSU.git"
         KSU_INPUT="${{ inputs.ksu_branch }}"
         if [ -z "$KSU_INPUT" ]; then
-          KSU_INPUT="dev-susfs"
+          KSU_INPUT="main"
         fi
 
         # Try as branch first, fall back to commit
         if git ls-remote --heads "$KSU_REPO" "$KSU_INPUT" | grep -q .; then
-          echo "Cloning KernelSU-Next from branch: $KSU_INPUT"
-          git clone --branch "$KSU_INPUT" "$KSU_REPO" /tmp/kernelsu-next
-          cd /tmp/kernelsu-next
+          echo "Cloning YukiSU from branch: $KSU_INPUT"
+          git clone --branch "$KSU_INPUT" "$KSU_REPO" /tmp/yukisu
+          cd /tmp/yukisu
           KSUN_COMMIT=$(git rev-parse HEAD)
         else
-          echo "Cloning KernelSU-Next from dev-susfs branch, then checking out commit: $KSU_INPUT"
-          git clone --branch dev-susfs "$KSU_REPO" /tmp/kernelsu-next
-          cd /tmp/kernelsu-next
+          echo "Cloning YukiSU from main branch, then checking out commit: $KSU_INPUT"
+          git clone --branch main "$KSU_REPO" /tmp/yukisu
+          cd /tmp/yukisu
           git fetch --depth=50 origin "$KSU_INPUT"
           git checkout "$KSU_INPUT"
           KSUN_COMMIT="$KSU_INPUT"
@@ -540,12 +540,8 @@ jobs:
         # Extract git tag
         KSU_GIT_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "no-tag")
 
-        MANAGER_RUN_ID=$(curl -fsSL "https://api.github.com/repos/pershoot/KernelSU-Next/actions/workflows/build-manager-ci.yml/runs?head_sha=${KSUN_COMMIT}" | jq -r '.workflow_runs[0].id // empty')
-        if [[ -n "${MANAGER_RUN_ID:-}" ]]; then
-          KSU_MANAGER="https://github.com/pershoot/KernelSU-Next/actions/runs/${MANAGER_RUN_ID}"
-        else
-          KSU_MANAGER="https://github.com/pershoot/KernelSU-Next/actions/workflows/build-manager-ci.yml"
-        fi
+        # Fallback to repo actions page since manager workflow might differ
+        KSU_MANAGER="https://github.com/Anatdx/YukiSU/actions"
 
         echo "Commits count: $COMMITS_COUNT"
         echo "KSU Version: $KSU_VERSION"

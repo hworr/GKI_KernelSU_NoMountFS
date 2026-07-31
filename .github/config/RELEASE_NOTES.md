@@ -8,7 +8,7 @@
 Join the telegram here: https://t.me/WildKernelsTG
 
 # Features
-- [KernelSU-Next](#kernelsu-next)
+- [YukiSU](#yukisu)
 - [SUSFS v2.2.0](#susfs-v220)
 - [Baseband Guard (BBG)](#baseband-guard-bbg)
 - [DroidSpaces-OSS](#droidspaces-oss)
@@ -18,12 +18,12 @@ Join the telegram here: https://t.me/WildKernelsTG
 
 <!-- NOTE: Anchor links above must match the heading IDs below. GitHub Flavored Markdown auto-generates anchors from heading text, but since these headings contain links, we use explicit IDs for reliable navigation. -->
 
-## [KernelSU-Next](https://github.com/pershoot/KernelSU-Next) {#kernelsu-next}
+## [YukiSU](https://github.com/Anatdx/YukiSU) {#yukisu}
 
 A kernel-based root solution for Android devices.
 
 > [!WARNING]
-> This release uses the [pershoot/KernelSU-Next](https://github.com/pershoot/KernelSU-Next) fork. The fork maintainer has said it is not ready for production use, so treat it as use at your own risk.
+> This release uses [YukiSU](https://github.com/Anatdx/YukiSU).
 
 Manager: {{KSU_MANAGER}}
 
