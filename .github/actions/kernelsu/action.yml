@@ -64,6 +64,10 @@ runs:
       uses: ./.github/actions/set-kernel-config
       with:
         config_list: |
-          CONFIG_KSU=y
+          CONFIG_KSU=m
           CONFIG_KSU_MANUAL_HOOK=y
           CONFIG_KPROBES=y
+          CONFIG_HAVE_KPROBES=y
+          CONFIG_KPROBE_EVENTS=y
+          CONFIG_KRETPROBES=y
+          CONFIG_HAVE_SYSCALL_TRACEPOINTS=y
